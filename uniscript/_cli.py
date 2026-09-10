@@ -18,6 +18,7 @@ from uniscript._core import sub, sup
 from uniscript._parser import render
 from uniscript._fallback import FallbackMode
 from uniscript._errors import SubstitutionError
+from uniscript._coverage import coverage, COMMON, ALPHANUMERIC, LOWERCASE, UPPERCASE, DIGITS
 
 
 def main() -> None:
@@ -43,6 +44,17 @@ def main() -> None:
         action="store_true",
         help="Convert entire input to superscript (no _ / ^ parsing).",
     )
+    mode.add_argument(
+        "--coverage",
+        action="store_true",
+        help="Show which characters are supported as sub/superscript and exit.",
+    )
+    parser.add_argument(
+        "--chars",
+        default="common",
+        choices=["common", "digits", "lower", "upper", "alpha"],
+        help="Character set to check with --coverage (default: common).",
+    )
     parser.add_argument(
         "--fallback",
         choices=["passthrough", "omit", "raise"],
@@ -51,6 +63,22 @@ def main() -> None:
     )
 
     args = parser.parse_args()
+
+    # --coverage: print report and exit
+    if args.coverage:
+        char_sets = {
+            "common": COMMON,
+            "digits": DIGITS,
+            "lower": LOWERCASE,
+            "upper": UPPERCASE,
+            "alpha": ALPHANUMERIC,
+        }
+        chars = char_sets[args.chars]
+        sub_report, sup_report = coverage(chars, mode="both")
+        print(sub_report)
+        print()
+        print(sup_report)
+        return
 
     # Read text from argument or stdin
     if args.text is not None:
