@@ -4,8 +4,6 @@ Coverage reporting for uniscript.
 Answers the question: "which characters can actually be converted?"
 """
 
-from __future__ import annotations
-
 import string
 from dataclasses import dataclass, field
 

@@ -9,8 +9,6 @@ Usage
     uniscript --sup "2"
 """
 
-from __future__ import annotations
-
 import argparse
 import sys
 
