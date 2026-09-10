@@ -34,9 +34,9 @@ dev = [
 uniscript = "uniscript._cli:main"
 
 [project.urls]
-Homepage = "https://github.com/Ahmed/uniscript"
-Repository = "https://github.com/Ahmed/uniscript"
-Issues = "https://github.com/Ahmed/uniscript/issues"
+Homepage = "https://github.com/ahmadw13/uniscript"
+Repository = "https://github.com/ahmadw13/uniscript"
+Issues = "https://github.com/ahmadw13/uniscript/issues"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

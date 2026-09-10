@@ -6,7 +6,7 @@
 
 ```bash
 # Clone
-git clone https://github.com/Ahmed/uniscript.git
+git clone https://github.com/ahmadw13/uniscript.git
 cd uniscript
 
 # Create venv and install dev deps (with uv)
