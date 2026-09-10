@@ -9,7 +9,7 @@ from uniscript._fallback import FallbackMode
 from uniscript._errors import SubstitutionError
 
 
-def translate(text: str, table: dict[str, str], fallback: FallbackMode) -> str:
+def translate(text: str, table: dict[str, str], fallback: FallbackMode, mode: str = "subscript") -> str:
     """Translate *text* character-by-character using *table*.
 
     Parameters
@@ -20,6 +20,8 @@ def translate(text: str, table: dict[str, str], fallback: FallbackMode) -> str:
         Lookup dict mapping plain chars to their Unicode equivalents.
     fallback:
         What to do when a character has no entry in *table*.
+    mode:
+        Human-readable name of the conversion mode, used in error messages.
 
     Returns
     -------
@@ -31,8 +33,19 @@ def translate(text: str, table: dict[str, str], fallback: FallbackMode) -> str:
     SubstitutionError
         If *fallback* is ``FallbackMode.RAISE`` and a character is missing.
     """
-    # TODO: implement
-    raise NotImplementedError
+    out: list[str] = []
+    for char in text:
+        mapped = table.get(char)
+        if mapped is not None:
+            out.append(mapped)
+        else:
+            if fallback is FallbackMode.RAISE:
+                raise SubstitutionError(char, mode)
+            elif fallback is FallbackMode.OMIT:
+                pass  # drop the character entirely
+            else:  # PASSTHROUGH (default)
+                out.append(char)
+    return "".join(out)
 
 
 def sub(text: str, fallback: FallbackMode = FallbackMode.PASSTHROUGH) -> str:
@@ -59,8 +72,7 @@ def sub(text: str, fallback: FallbackMode = FallbackMode.PASSTHROUGH) -> str:
     >>> sub("0123")
     '₀₁₂₃'
     """
-    # TODO: implement
-    raise NotImplementedError
+    return translate(text, SUB_MAP, fallback, mode="subscript")
 
 
 def sup(text: str, fallback: FallbackMode = FallbackMode.PASSTHROUGH) -> str:
@@ -87,5 +99,4 @@ def sup(text: str, fallback: FallbackMode = FallbackMode.PASSTHROUGH) -> str:
     >>> sup("n+1")
     'ⁿ⁺¹'
     """
-    # TODO: implement
-    raise NotImplementedError
+    return translate(text, SUP_MAP, fallback, mode="superscript")
