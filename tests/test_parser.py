@@ -52,3 +52,24 @@ class TestRenderEdgeCases:
     def test_caret_at_end(self):
         result = render("a^")
         assert isinstance(result, str)
+
+    def test_unclosed_paren_subscript(self):
+        # "(n+1" — no closing paren — should not crash, just convert what it can
+        result = render("x_(n+1")
+        assert isinstance(result, str)
+        assert "x" in result
+
+    def test_unclosed_paren_superscript(self):
+        result = render("x^(n+1")
+        assert isinstance(result, str)
+        assert "x" in result
+
+    def test_subscript_marker_at_string_end(self):
+        # _ at the very end of the string — _token_end called with start >= len
+        result = render("x_")
+        assert result == "x_"
+
+    def test_superscript_marker_at_string_end(self):
+        result = render("x^")
+        assert result == "x^"
+
