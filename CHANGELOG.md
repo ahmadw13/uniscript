@@ -13,6 +13,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - GitHub Actions PyPI Trusted Publishing workflow (`.github/workflows/publish.yml`)
 - Badges and updated documentation in `README.md` for Greek shorthands and coverage CLI
 
+## [0.1.1] - 2026-09-11
+
+### Changed
+- Promoted PyPI development status classifier to `Development Status :: 5 - Production/Stable`.
+
 ---
 
 ## [0.1.0] - 2026-09-11
