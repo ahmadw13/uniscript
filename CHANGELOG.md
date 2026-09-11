@@ -10,29 +10,29 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Added
-- GitHub Actions CI workflow (`.github/workflows/ci.yml`) — runs `pytest` across Python 3.11, 3.12, 3.13 on Ubuntu on every push and PR
-- CI required as a passing status check on `main` and `dev` branch protection rules
-- `coverage(chars, mode)` — returns a `CoverageReport` showing which characters have Unicode sub/superscript equivalents, with percentage and full character-by-character breakdown
-- `check(text)` — audits every character in a string and returns sub/sup equivalents (or `None` if unsupported)
-- `CoverageReport` dataclass with `supported`, `unsupported`, `percent`, `total`, and human-readable `__str__`
-- Preset character set constants: `COMMON`, `DIGITS`, `LOWERCASE`, `UPPERCASE`, `ALPHANUMERIC`
-- `--coverage` and `--chars` flags to the CLI
-- `coverage`, `check`, `CoverageReport` exported from the public API in `__init__.py`
-- 18 new tests in `tests/test_coverage.py`
-- Initial implementation of `sub()`, `sup()`, `render()`, `translate()`, and CLI (from `feat/core-translate`)
-- `SubstitutionError` with full error message including Unicode code point
-- `FallbackMode` enum: `PASSTHROUGH`, `OMIT`, `RAISE`
-- Full Unicode lookup tables in `_tables.py` with source comments per entry (Unicode block + code point)
-- Greek letter support: 48 shorthands in `_greek.py` (e.g. `\beta` -> `β`), 7 Greek superscripts in `SUP_MAP` (β, γ, δ, θ, ι, φ, χ), and automatic shorthand resolution in `render()`
+- GitHub Actions PyPI Trusted Publishing workflow (`.github/workflows/publish.yml`)
+- Badges and updated documentation in `README.md` for Greek shorthands and coverage CLI
+
+---
+
+## [0.1.0] - 2026-09-11
+
+### Added
+- Core sub/superscript translation engine: `sub()`, `sup()`, and `translate()`
+- Smart notation parser: `render()` with support for `t_insp` -> `tᵢₙₛₚ`, `E=mc^2` -> `E=mc²`, `x^(n+1)` -> `xⁿ⁺¹`, and `CO_2` -> `CO₂`
+- Complete Unicode lookup tables in `_tables.py` with code point documentation
+- `FallbackMode` enum (`PASSTHROUGH`, `OMIT`, `RAISE`) and custom `SubstitutionError`
+- Greek letter support: 48 shorthands in `_greek.py` (e.g. `\beta` -> `β`), 7 Greek superscripts in `SUP_MAP` (β, γ, δ, θ, ι, φ, χ), and auto-resolution in `render()`
 - `GREEK_SHORTHANDS` and `resolve_shorthands` exported from public API
-- 32 new tests in `tests/test_greek.py`
-- CLI with `--sub`, `--sup`, `--fallback`, `--coverage`, `--chars` flags and stdin support
+- Character coverage auditing: `coverage()` and `check()` APIs with `CoverageReport` dataclass
+- CLI application: `uniscript` supporting args, stdin, `--sub`, `--sup`, `--coverage`, `--chars`, and `--fallback`
+- GitHub Actions CI workflow (`.github/workflows/ci.yml`) on Node.js 24 across Python 3.11, 3.12, and 3.13
+- 100 comprehensive unit tests with 96% code coverage
 
 ### Changed
-- Minimum Python version raised to `>=3.11` (dropped EOL 3.9 and 3.10)
+- Set modern Python baseline to `>=3.11` (dropped EOL 3.9 and 3.10)
 - Added Python 3.13 classifier
-- Dev deps bumped: `pytest>=9.1.1`, `pytest-cov>=7.1.0`
-- Dropped `from __future__ import annotations` shim from all modules (not needed on 3.11+)
-- GitHub repository URLs corrected to `ahmadw13/uniscript` across `pyproject.toml`, `README.md`, `DEVELOPMENT.md`
-- PR template updated to match kurd-doc-intel structure (added Screenshots section, standardised wording)
+- Updated dev dependencies: `pytest>=9.1.1`, `pytest-cov>=7.1.0`
+- Normalized repository URLs to `ahmadw13/uniscript`
+
 
