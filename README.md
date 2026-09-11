@@ -161,6 +161,25 @@ uniscript --coverage --chars lower
 
 ---
 
+## Roadmap
+
+- [x] **v0.1.0** — Core translation engine, notation parser (`_`, `^`), 48 Greek shorthands, coverage inspection, CLI, PyPI release
+- [ ] **v0.2.0 — Science & Chemistry Intelligence:**
+  - Automatic chemical formula subscripts (`H2O` ➔ `H₂O`, `CO2` ➔ `CO₂`) without requiring underscores
+  - Ion & charge notation (`Ca^2+` ➔ `Ca²⁺`, `SO4^2-` ➔ `SO₄²⁻`)
+  - Physiology & clinical presets (`P_aO2`, `V_O2_max`, `F_iO2`)
+- [ ] **v0.3.0 — Math & Typography Expansion:**
+  - Scientific unit formatting (`m/s^2` ➔ `m/s²`, `cm^3` ➔ `cm³`)
+  - Vulgar fraction conversions (`1/2` ➔ `½`, `1/4` ➔ `¼`)
+  - `unrender()` / reverse conversion (Unicode subscript ➔ ASCII notation)
+- [ ] **v0.4.0 — Developer Ecosystem:**
+  - Rich / Typer / Click terminal formatting integrations
+  - Micro-benchmarks & parsing optimization
+- [ ] **v1.0.0 — The Production Standard:**
+  - Strict zero-dependency guarantee & frozen public API
+
+---
+
 ## Development
 
 See [DEVELOPMENT.md](DEVELOPMENT.md) for local environment setup, testing, and contribution flow.
