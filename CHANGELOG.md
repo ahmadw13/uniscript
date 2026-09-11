@@ -9,9 +9,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
-### Added
-- GitHub Actions PyPI Trusted Publishing workflow (`.github/workflows/publish.yml`)
-- Badges and updated documentation in `README.md` for Greek shorthands and coverage CLI
+---
 
 ## [0.1.1] - 2026-09-11
 
@@ -39,5 +37,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added Python 3.13 classifier
 - Updated dev dependencies: `pytest>=9.1.1`, `pytest-cov>=7.1.0`
 - Normalized repository URLs to `ahmadw13/uniscript`
+
 
 
