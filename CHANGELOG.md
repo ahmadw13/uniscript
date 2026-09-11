@@ -23,6 +23,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `SubstitutionError` with full error message including Unicode code point
 - `FallbackMode` enum: `PASSTHROUGH`, `OMIT`, `RAISE`
 - Full Unicode lookup tables in `_tables.py` with source comments per entry (Unicode block + code point)
+- Greek letter support: 48 shorthands in `_greek.py` (e.g. `\beta` -> `β`), 7 Greek superscripts in `SUP_MAP` (β, γ, δ, θ, ι, φ, χ), and automatic shorthand resolution in `render()`
+- `GREEK_SHORTHANDS` and `resolve_shorthands` exported from public API
+- 32 new tests in `tests/test_greek.py`
 - CLI with `--sub`, `--sup`, `--fallback`, `--coverage`, `--chars` flags and stdin support
 
 ### Changed

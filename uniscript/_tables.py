@@ -140,4 +140,12 @@ SUP_MAP: dict[str, str] = {
     "U": "\u1D41",  # ᵁ  U+1D41 MODIFIER LETTER CAPITAL U
     "V": "\u2C7D",  # ᱽ  U+2C7D MODIFIER LETTER CAPITAL V
     "W": "\u1D42",  # ᵂ  U+1D42 MODIFIER LETTER CAPITAL W
+    # --- Greek letters (Phonetic Extensions U+1D5D–U+1D61, Phonetic Extensions Supplement) ---
+    "\u03B2": "\u1D5D",  # β → ᵝ  U+1D5D MODIFIER LETTER SMALL BETA
+    "\u03B3": "\u1D5E",  # γ → ᵞ  U+1D5E MODIFIER LETTER SMALL GREEK GAMMA
+    "\u03B4": "\u1D5F",  # δ → ᵟ  U+1D5F MODIFIER LETTER SMALL DELTA
+    "\u03B8": "\u1DBF",  # θ → ᶿ  U+1DBF MODIFIER LETTER SMALL THETA (Phonetic Ext. Supplement)
+    "\u03B9": "\u1DA5",  # ι → ᶥ  U+1DA5 MODIFIER LETTER SMALL IOTA (Phonetic Ext. Supplement)
+    "\u03C6": "\u1D60",  # φ → ᵠ  U+1D60 MODIFIER LETTER SMALL GREEK PHI
+    "\u03C7": "\u1D61",  # χ → ᵡ  U+1D61 MODIFIER LETTER SMALL GREEK CHI
 }
