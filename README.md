@@ -17,7 +17,14 @@ render(r"x_\beta")     # → "xᵦ"
 render(r"\sigma_x")    # → "σₓ"
 ```
 
-Works anywhere plain text works: terminals, Slack, Markdown files, Jupyter notebooks, text editors, and Python `print()`.
+| Input Notation | Rendered Output | Domain |
+| :--- | :--- | :--- |
+| `render("t_insp")` | `tᵢₙₛₚ` | Physiology / Medicine |
+| `render("CO_2")` | `CO₂` | Chemistry |
+| `render("E=mc^2")` | `E=mc²` | Physics |
+| `render("x^(n+1)")` | `xⁿ⁺¹` | Mathematics |
+| `render(r"x_\beta")` | `xᵦ` | Greek Shorthands |
+| `render(r"E_\gamma^2")` | `Eᵧ²` | Particle Physics |
 
 ---
 
@@ -163,20 +170,39 @@ uniscript --coverage --chars lower
 
 ## Roadmap
 
-- [x] **v0.1.0** — Core translation engine, notation parser (`_`, `^`), 48 Greek shorthands, coverage inspection, CLI, PyPI release
-- [ ] **v0.2.0 — Science & Chemistry Intelligence:**
-  - Automatic chemical formula subscripts (`H2O` ➔ `H₂O`, `CO2` ➔ `CO₂`) without requiring underscores
-  - Ion & charge notation (`Ca^2+` ➔ `Ca²⁺`, `SO4^2-` ➔ `SO₄²⁻`)
-  - Physiology & clinical presets (`P_aO2`, `V_O2_max`, `F_iO2`)
-- [ ] **v0.3.0 — Math & Typography Expansion:**
-  - Scientific unit formatting (`m/s^2` ➔ `m/s²`, `cm^3` ➔ `cm³`)
-  - Vulgar fraction conversions (`1/2` ➔ `½`, `1/4` ➔ `¼`)
-  - `unrender()` / reverse conversion (Unicode subscript ➔ ASCII notation)
-- [ ] **v0.4.0 — Developer Ecosystem:**
-  - Rich / Typer / Click terminal formatting integrations
-  - Micro-benchmarks & parsing optimization
-- [ ] **v1.0.0 — The Production Standard:**
-  - Strict zero-dependency guarantee & frozen public API
+```mermaid
+flowchart TD
+    subgraph M1["v0.1.x - Shipped on PyPI"]
+        A["Core Translation Engine (sub, sup, translate)"]
+        B["Smart Notation Parser (_ and ^ tokens)"]
+        C["Greek Shorthands (48 LaTeX-style names)"]
+        D["Coverage Audit Tool & CLI Application"]
+    end
+
+    subgraph M2["v0.2.0 - Science & Chemistry (Next)"]
+        E["Chemical Formula Auto-Subscripts (H2O to H₂O, CO2 to CO₂)"]
+        F["Ion and Charge Notation (Ca²⁺, SO₄²⁻, Fe³⁺)"]
+        G["Physiology & Clinical Presets (PaO₂, VO₂ₘₐₓ, FiO₂)"]
+    end
+
+    subgraph M3["v0.3.0 - Math & Typography"]
+        H["Scientific Units & Exponents (m/s², cm³, kg·m/s²)"]
+        I["Vulgar Fraction Conversions (½, ¼, ¾)"]
+        J["Reverse unrender() API (Unicode to ASCII)"]
+    end
+
+    subgraph M4["v1.0.0 - Production Standard"]
+        K["Zero-Dependency Spec Freeze & Micro-Benchmarks"]
+    end
+
+    M1 --> M2 --> M3 --> M4
+```
+
+- [x] **v0.1.0 / v0.1.1** — Production release on PyPI with core parser, Greek shorthands, coverage tool, and CLI.
+- [ ] **v0.2.0** — Automatic chemical formula recognition, ion charges, and physiological parameter presets.
+- [ ] **v0.3.0** — Metric units, vulgar fractions, and `unrender()` reverse normalization.
+- [ ] **v0.4.0** — Rich / Click / Typer CLI formatting integrations.
+- [ ] **v1.0.0** — Frozen public API with zero-dependency guarantee.
 
 ---
 
