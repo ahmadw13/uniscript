@@ -13,10 +13,9 @@ CO_2        → CO₂            (numeric subscript)
 V_O2_max    → VO₂ₘₐₓ        (chained subscripts)
 """
 
-from __future__ import annotations
-
 from uniscript._core import sub, sup
 from uniscript._fallback import FallbackMode
+from uniscript._greek import resolve_shorthands
 
 
 def _collect_token(text: str, start: int) -> str:
@@ -102,7 +101,12 @@ def render(text: str, fallback: FallbackMode = FallbackMode.PASSTHROUGH) -> str:
     'E=mc²'
     >>> render("x^(n+1)")
     'xⁿ⁺¹'
+    >>> render(r"x_\beta")
+    'xᵦ'
     """
+    # Resolve \\alpha, \\beta etc. before tokenising
+    text = resolve_shorthands(text)
+
     out: list[str] = []
     i = 0
     n = len(text)
