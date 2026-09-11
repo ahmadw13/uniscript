@@ -3,11 +3,16 @@ uniscript — Auto Unicode subscript/superscript conversion.
 
 Public API
 ----------
-sub(text, fallback=FallbackMode.PASSTHROUGH)  -> str
-sup(text, fallback=FallbackMode.PASSTHROUGH)  -> str
-render(text, fallback=FallbackMode.PASSTHROUGH) -> str
+sub(text, fallback=FallbackMode.PASSTHROUGH)     -> str
+sup(text, fallback=FallbackMode.PASSTHROUGH)     -> str
+render(text, fallback=FallbackMode.PASSTHROUGH)  -> str
+coverage(chars, mode)                            -> CoverageReport | tuple
+check(text)                                      -> dict
 FallbackMode
+CoverageReport
 UniScriptError
+GREEK_SHORTHANDS
+resolve_shorthands
 """
 
 from uniscript._core import sub, sup
@@ -30,3 +35,4 @@ __all__ = [
     "GREEK_SHORTHANDS",
     "resolve_shorthands",
 ]
+
