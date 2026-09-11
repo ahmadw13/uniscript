@@ -26,6 +26,16 @@ render(r"\sigma_x")    # → "σₓ"
 | `render(r"x_\beta")` | `xᵦ` | Greek Shorthands |
 | `render(r"E_\gamma^2")` | `Eᵧ²` | Particle Physics |
 
+### How It Works
+
+```mermaid
+flowchart LR
+    A["Raw Input: x_beta^2 + CO_2"] --> B["Greek Resolver: beta to β"]
+    B --> C["Token Parser: _ and ^ markers"]
+    C --> D["Unicode Tables: SUB_MAP, SUP_MAP"]
+    D --> E["Rendered Output: xᵦ² + CO₂"]
+```
+
 ---
 
 ## Installation
@@ -171,31 +181,13 @@ uniscript --coverage --chars lower
 ## Roadmap
 
 ```mermaid
-flowchart TD
-    subgraph M1["v0.1.x - Shipped on PyPI"]
-        A["Core Translation Engine (sub, sup, translate)"]
-        B["Smart Notation Parser (_ and ^ tokens)"]
-        C["Greek Shorthands (48 LaTeX-style names)"]
-        D["Coverage Audit Tool & CLI Application"]
-    end
+flowchart LR
+    M1["🟢 v0.1.x Shipped<br/>• Core Sub/Sup Engine<br/>• Smart Notation Parser<br/>• 48 Greek Shorthands<br/>• Coverage Tool & CLI"]
+    M2["🟡 v0.2.0 Next<br/>• Chem Auto-Subscripts (H₂O)<br/>• Ion Charges (Ca²⁺)<br/>• Clinical Presets (PaO₂)"]
+    M3["⚪ v0.3.0 Planned<br/>• Metric Units (m/s²)<br/>• Vulgar Fractions (½, ¼)<br/>• Reverse unrender() API"]
+    M4["⚪ v1.0.0 Standard<br/>• Frozen Public API<br/>• Zero-Dependency Guarantee<br/>• Performance Benchmarks"]
 
-    subgraph M2["v0.2.0 - Science & Chemistry (Next)"]
-        E["Chemical Formula Auto-Subscripts (H2O to H₂O, CO2 to CO₂)"]
-        F["Ion and Charge Notation (Ca²⁺, SO₄²⁻, Fe³⁺)"]
-        G["Physiology & Clinical Presets (PaO₂, VO₂ₘₐₓ, FiO₂)"]
-    end
-
-    subgraph M3["v0.3.0 - Math & Typography"]
-        H["Scientific Units & Exponents (m/s², cm³, kg·m/s²)"]
-        I["Vulgar Fraction Conversions (½, ¼, ¾)"]
-        J["Reverse unrender() API (Unicode to ASCII)"]
-    end
-
-    subgraph M4["v1.0.0 - Production Standard"]
-        K["Zero-Dependency Spec Freeze & Micro-Benchmarks"]
-    end
-
-    M1 --> M2 --> M3 --> M4
+    M1 ==> M2 --> M3 --> M4
 ```
 
 - [x] **v0.1.0 / v0.1.1** — Production release on PyPI with core parser, Greek shorthands, coverage tool, and CLI.
