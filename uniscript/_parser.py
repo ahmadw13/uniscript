@@ -13,8 +13,6 @@ CO_2        → CO₂            (numeric subscript)
 V_O2_max    → VO₂ₘₐₓ        (chained subscripts)
 """
 
-from __future__ import annotations
-
 from uniscript._core import sub, sup
 from uniscript._fallback import FallbackMode
 

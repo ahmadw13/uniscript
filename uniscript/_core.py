@@ -2,8 +2,6 @@
 Core translation engine: sub(), sup(), translate().
 """
 
-from __future__ import annotations
-
 from uniscript._tables import SUB_MAP, SUP_MAP
 from uniscript._fallback import FallbackMode
 from uniscript._errors import SubstitutionError
